@@ -25,7 +25,7 @@ pnpm install vue-use-route-query
 
 ## Usage
 
-Simple usage with a string parameter without any transformations
+Simple example with a string parameter without any transformations
 
 ```ts
 import { defineComponent } from '@vue/composition-api'
@@ -36,6 +36,8 @@ export default defineComponent({
         const foo = useRouteQuery('foo', ''); // Ref<string>
         const bar = useRouteQuery('bar', null); // Ref<string | null>
 
+        foo.value = 'foo'; // Results in 'foo=foo' in the query
+      
         return {
             foo,
             bar,
@@ -44,7 +46,7 @@ export default defineComponent({
 })
 ```
 
-More complex usage with a transformer function
+More complex example with a transformer
 
 ```ts
 import { defineComponent } from '@vue/composition-api'
