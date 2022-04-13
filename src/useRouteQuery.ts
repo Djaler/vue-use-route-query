@@ -24,9 +24,7 @@ export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: Rou
                 return defaultValue;
             }
 
-            const value = Array.isArray(route.value.query[key])
-                ? route.value.query[key][0]
-                : route.value.query[key] as string;
+            const value = getQueryValue(route.value.query, key);
 
             if (!value) {
                 return defaultValue;
@@ -55,6 +53,14 @@ export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: Rou
             updateQueryParam(transformedValue);
         },
     });
+}
+
+function getQueryValue(query: Route['query'], key: string): string | null {
+    const value = query[key];
+    if (Array.isArray(value)) {
+        return value[0];
+    }
+    return value;
 }
 
 let queryReplaceQueue: AsyncQueue<Route['query']> | undefined;
