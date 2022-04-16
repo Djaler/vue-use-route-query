@@ -1,14 +1,14 @@
 import { AsyncQueue, createAsyncQueue } from 'async-queue-chain';
 import type VueRouter from 'vue-router';
-import type { Route } from 'vue-router';
 
+import { RouteQuery } from './types';
 import { removeEmptyValues } from './utils';
 
-let queryReplaceQueue: AsyncQueue<Route['query']> | undefined;
+let queryReplaceQueue: AsyncQueue<RouteQuery> | undefined;
 
 export function queueQueryUpdate(
     router: VueRouter,
-    currentQuery: Route['query'],
+    currentQuery: RouteQuery,
     key: string,
     newValue: string | null | undefined,
 ) {
