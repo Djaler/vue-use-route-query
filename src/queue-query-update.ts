@@ -22,12 +22,19 @@ export function queueQueryUpdate(
             [key]: newValue,
         });
 
-        return router.replace({
-            query: newQuery,
-        })
-            .then(newRoute => newRoute.query)
-            .catch(() => previousQuery);
+        return updateQuery(router, previousQuery, newQuery);
     });
 
     void queryReplaceQueue.run(currentQuery);
+}
+
+async function updateQuery(router: VueRouter, previousQuery: RouteQuery, query: RouteQuery) {
+    try {
+        await router.replace({
+            query,
+        });
+        return query;
+    } catch (e) {
+        return previousQuery;
+    }
 }
