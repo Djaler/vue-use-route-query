@@ -36,12 +36,5 @@ export default defineConfig({
         setupFiles: [
             'tests/setup.ts',
         ],
-        coverage: {
-            exclude: [
-                'node_modules/**',
-                '**/*.spec.ts',
-                'tests/**',
-            ],
-        },
     },
 });
