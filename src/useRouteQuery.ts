@@ -1,9 +1,9 @@
 import { computed, Ref } from '@vue/composition-api';
-import type { Route } from 'vue-router';
 
 import { useRoute, useRouter } from './helpers';
 import { queueQueryUpdate } from './queue-query-update';
 import { RouteQueryTransformer } from './transformers';
+import { RouteQuery } from './types';
 
 export function useRouteQuery(key: string, defaultValue: string): Ref<string>;
 export function useRouteQuery(key: string, defaultValue: string | null): Ref<string | null>;
@@ -53,7 +53,7 @@ export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: Rou
     });
 }
 
-function getQueryValue(query: Route['query'], key: string): string | null {
+function getQueryValue(query: RouteQuery, key: string): string | null | undefined {
     const value = query[key];
     if (Array.isArray(value)) {
         return value[0];
