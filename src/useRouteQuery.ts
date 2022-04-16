@@ -15,7 +15,7 @@ export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: Rou
     const router = useRouter();
 
     function updateQueryParam(newValue: string | null | undefined) {
-        queueQueryUpdate(router, route.value, key, newValue);
+        queueQueryUpdate(router, key, newValue);
     }
 
     return computed({
@@ -65,7 +65,7 @@ function getQueryValue(query: Route['query'], key: string): string | null {
 
 let queryReplaceQueue: AsyncQueue<Route['query']> | undefined;
 
-function queueQueryUpdate(router: VueRouter, route: Route, key: string, newValue: string | null | undefined) {
+function queueQueryUpdate(router: VueRouter, key: string, newValue: string | null | undefined) {
     if (!queryReplaceQueue) {
         queryReplaceQueue = createAsyncQueue<Route['query']>();
     }
@@ -83,5 +83,5 @@ function queueQueryUpdate(router: VueRouter, route: Route, key: string, newValue
             .catch(() => previousQuery);
     });
 
-    void queryReplaceQueue.run(route.query);
+    void queryReplaceQueue.run(router.currentRoute.query);
 }
