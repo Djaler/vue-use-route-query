@@ -1,0 +1,15 @@
+{
+  "name": "tests-vue3",
+  "private": true,
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "2.0.0-rc.21",
+    "jsdom": "19.0.0",
+    "tests-base": "workspace:*",
+    "vitest": "0.9.3",
+    "vue": "3.2.33",
+    "vue-router": "4.0.14"
+  }
+}
