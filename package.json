@@ -1,79 +1,38 @@
 {
-  "name": "vue-use-route-query",
-  "version": "0.0.1",
-  "author": "Kirill Romanov",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Djaler/vue-use-route-query"
-  },
-  "keywords": [
-    "vue",
-    "router",
-    "vue-router",
-    "query",
-    "composition-api",
-    "vue-composition-api"
-  ],
+  "name": "vue-use-route-query-monorepo",
+  "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
-    "check-es6": "es-check es2017 dist/index.js",
-    "check-treeshake": "agadoo dist/index.mjs",
-    "build": "vite build",
-    "postbuild": "npm run check-es6 && npm run check-treeshake",
-    "prerelease": "npm run lint && npm run test && npm run build",
+    "test:core": "cd packages/core && npm run test",
+    "test:vue2": "cd packages/tests-vue2 && npm run test",
+    "test:all": "npm run test:core && npm run test:vue2",
+    "build": "cd packages/core && npm run build",
+    "prerelease": "npm run lint && npm run test:all && npm run build",
     "release": "standard-version --preset @djaler/standard",
     "release:github": "conventional-github-releaser --preset @djaler/standard",
-    "publish": "clean-publish"
+    "prepublishOnly": "cd packages/core && npm run publish"
   },
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "sideEffects": false,
   "packageManager": "pnpm@6.32.4",
-  "dependencies": {
-    "async-queue-chain": "^1.0.1"
-  },
-  "peerDependencies": {
-    "@vue/composition-api": "^1.1.0",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.0"
-  },
   "devDependencies": {
     "@djaler/conventional-changelog-standard": "1.2.0",
     "@djaler/eslint-config-typescript": "0.0.7",
-    "@vue/composition-api": "1.4.9",
-    "@vue/test-utils": "1.3.0",
-    "agadoo": "2.0.0",
-    "clean-publish": "4.0.0",
     "conventional-github-releaser": "3.1.5",
-    "es-check": "6.2.1",
     "eslint": "7.32.0",
     "eslint-import-resolver-typescript": "2.7.1",
-    "jsdom": "^19.0.0",
     "nano-staged": "0.6.0",
     "simple-git-hooks": "2.7.0",
-    "simple-promise-mock": "^1.0.0",
     "standard-version": "9.3.2",
-    "typescript": "4.6.3",
-    "vite": "2.9.1",
-    "vite-plugin-dts": "1.0.5",
-    "vitest": "0.9.3",
-    "vue": "2.6.14",
-    "vue-router": "3.1.3",
-    "vue-template-compiler": "2.6.14"
+    "typescript": "4.6.3"
   },
   "simple-git-hooks": {
     "pre-commit": "./node_modules/.bin/simple-git-hooks && ./node_modules/.bin/nano-staged"
   },
   "nano-staged": {
     "*.{js,ts}": "eslint --fix"
+  },
+  "publishConfig": {
+    "directory": "packages/core/publishDirectory"
   }
 }

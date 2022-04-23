@@ -1,56 +1,73 @@
 lockfileVersion: 5.3
 
-specifiers:
-  '@djaler/conventional-changelog-standard': 1.2.0
-  '@djaler/eslint-config-typescript': 0.0.7
-  '@vue/composition-api': 1.4.9
-  '@vue/test-utils': 1.3.0
-  agadoo: 2.0.0
-  async-queue-chain: ^1.0.1
-  clean-publish: 4.0.0
-  conventional-github-releaser: 3.1.5
-  es-check: 6.2.1
-  eslint: 7.32.0
-  eslint-import-resolver-typescript: 2.7.1
-  jsdom: ^19.0.0
-  nano-staged: 0.6.0
-  simple-git-hooks: 2.7.0
-  simple-promise-mock: ^1.0.0
-  standard-version: 9.3.2
-  typescript: 4.6.3
-  vite: 2.9.1
-  vite-plugin-dts: 1.0.5
-  vitest: 0.9.3
-  vue: 2.6.14
-  vue-router: 3.1.3
-  vue-template-compiler: 2.6.14
+importers:
 
-dependencies:
-  async-queue-chain: 1.0.1
+  .:
+    specifiers:
+      '@djaler/conventional-changelog-standard': 1.2.0
+      '@djaler/eslint-config-typescript': 0.0.7
+      conventional-github-releaser: 3.1.5
+      eslint: 7.32.0
+      eslint-import-resolver-typescript: 2.7.1
+      nano-staged: 0.6.0
+      simple-git-hooks: 2.7.0
+      standard-version: 9.3.2
+      typescript: 4.6.3
+    devDependencies:
+      '@djaler/conventional-changelog-standard': 1.2.0
+      '@djaler/eslint-config-typescript': 0.0.7_eslint@7.32.0+typescript@4.6.3
+      conventional-github-releaser: 3.1.5
+      eslint: 7.32.0
+      eslint-import-resolver-typescript: 2.7.1_eslint@7.32.0
+      nano-staged: 0.6.0
+      simple-git-hooks: 2.7.0
+      standard-version: 9.3.2
+      typescript: 4.6.3
 
-devDependencies:
-  '@djaler/conventional-changelog-standard': 1.2.0
-  '@djaler/eslint-config-typescript': 0.0.7_eslint@7.32.0+typescript@4.6.3
-  '@vue/composition-api': 1.4.9_vue@2.6.14
-  '@vue/test-utils': 1.3.0_9065e7474e033a8e4b95615fc8e6c36c
-  agadoo: 2.0.0
-  clean-publish: 4.0.0
-  conventional-github-releaser: 3.1.5
-  es-check: 6.2.1
-  eslint: 7.32.0
-  eslint-import-resolver-typescript: 2.7.1_eslint@7.32.0
-  jsdom: 19.0.0
-  nano-staged: 0.6.0
-  simple-git-hooks: 2.7.0
-  simple-promise-mock: 1.0.0
-  standard-version: 9.3.2
-  typescript: 4.6.3
-  vite: 2.9.1
-  vite-plugin-dts: 1.0.5_vite@2.9.1
-  vitest: 0.9.3_jsdom@19.0.0
-  vue: 2.6.14
-  vue-router: 3.1.3
-  vue-template-compiler: 2.6.14
+  packages/core:
+    specifiers:
+      '@vue/composition-api': 1.4.9
+      agadoo: 2.0.0
+      async-queue-chain: ^1.0.1
+      clean-publish: 4.0.0
+      es-check: 6.2.1
+      vite: 2.9.1
+      vite-plugin-dts: 1.0.5
+      vitest: 0.9.3
+      vue: 2.6.14
+      vue-router: 3.1.3
+    dependencies:
+      async-queue-chain: 1.0.1
+    devDependencies:
+      '@vue/composition-api': 1.4.9_vue@2.6.14
+      agadoo: 2.0.0
+      clean-publish: 4.0.0
+      es-check: 6.2.1
+      vite: 2.9.1
+      vite-plugin-dts: 1.0.5_vite@2.9.1
+      vitest: 0.9.3
+      vue: 2.6.14
+      vue-router: 3.1.3
+
+  packages/tests-vue2:
+    specifiers:
+      '@vue/composition-api': 1.4.9
+      '@vue/test-utils': 1.3.0
+      jsdom: 19.0.0
+      vitest: 0.9.3
+      vue: 2.6.14
+      vue-router: 3.1.3
+      vue-template-compiler: 2.6.14
+      vue-use-route-query: workspace:*
+    devDependencies:
+      '@vue/composition-api': 1.4.9_vue@2.6.14
+      '@vue/test-utils': 1.3.0_9065e7474e033a8e4b95615fc8e6c36c
+      jsdom: 19.0.0
+      vitest: 0.9.3_jsdom@19.0.0
+      vue: 2.6.14
+      vue-router: 3.1.3
+      vue-template-compiler: 2.6.14
+      vue-use-route-query: link:../core
 
 packages:
 
@@ -235,7 +252,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 13.9.3
+      '@types/node': 17.0.23
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -277,7 +294,7 @@ packages:
   /@types/tabtab/3.0.2:
     resolution: {integrity: sha512-d8aOSJPS3SEGZevyr7vbAVUNPWGFmdFlk13vbPPK87vz+gYGM57L8T11k4wK2mOgQYZjEVYQEqmCTvupPoQBWw==}
     dependencies:
-      '@types/node': 13.9.3
+      '@types/node': 17.0.23
     dev: true
 
   /@types/wrap-ansi/3.0.0:
@@ -604,11 +621,11 @@ packages:
   /async/2.6.3:
     resolution: {integrity: sha512-zflvls11DCy+dQWzTW2dzuilv8Z5X/pjfmZOWba6TNIVDm+2UDaJmXSOXlasHKfNBs8oo3M0aT50fDEWfKZjXg==}
     dependencies:
-      lodash: 4.17.15
+      lodash: 4.17.21
     dev: true
 
   /asynckit/0.4.0:
-    resolution: {integrity: sha1-x57Zf380y48robyXkLzDZkdLS3k=}
+    resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
     dev: true
 
   /balanced-match/1.0.2:
@@ -751,7 +768,7 @@ packages:
     dev: true
 
   /check-error/1.0.2:
-    resolution: {integrity: sha1-V00xLt2Iu13YkS6Sht1sCu1KrII=}
+    resolution: {integrity: sha512-BrgHpW9NURQgzoNyjfq0Wu6VFO6D7IZEmJNdtgNqpzGG8RuNFHt2jQxWlAs4HMe119chBnv+34syEZtc6IhLtA==}
     dev: true
 
   /clean-publish/4.0.0:
@@ -881,7 +898,7 @@ packages:
     dev: true
 
   /condense-newlines/0.2.1:
-    resolution: {integrity: sha1-PemFVTE5R10yUCyDsC9gaE0kxV8=}
+    resolution: {integrity: sha512-P7X+QL9Hb9B/c8HI5BFFKmjgBu2XpQuF98WZ9XkO+dBGgk5XgwiQz7o1SmpglNWId3581UcS0SFAWfoIhMHPfg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       extend-shallow: 2.0.1
@@ -1226,7 +1243,7 @@ packages:
     dev: true
 
   /de-indent/1.0.2:
-    resolution: {integrity: sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=}
+    resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
     dev: true
 
   /debug/2.6.9:
@@ -1301,7 +1318,7 @@ packages:
     dev: true
 
   /delayed-stream/1.0.0:
-    resolution: {integrity: sha1-3zrhmayt+31ECqrgsp4icrJOxhk=}
+    resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
     dev: true
 
@@ -1965,7 +1982,7 @@ packages:
     dev: true
 
   /extend-shallow/2.0.1:
-    resolution: {integrity: sha1-Ua99YUrZqfYQ6huvu5idaxxWiQ8=}
+    resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==}
     engines: {node: '>=0.10.0'}
     dependencies:
       is-extendable: 0.1.1
@@ -2516,7 +2533,7 @@ packages:
       cli-width: 2.2.1
       external-editor: 3.1.0
       figures: 2.0.0
-      lodash: 4.17.15
+      lodash: 4.17.21
       mute-stream: 0.0.7
       run-async: 2.4.1
       rxjs: 6.6.7
@@ -3965,10 +3982,6 @@ packages:
     requiresBuild: true
     dev: true
 
-  /simple-promise-mock/1.0.0:
-    resolution: {integrity: sha512-5OltRbxEre+ZVpef+EHPeti/ywPPKePQvwvva8xEzOMLHysrK6pP23H3EAy9iFfM3DdIV5alBC0Gqmd07l42nQ==}
-    dev: true
-
   /simple-swizzle/0.2.2:
     resolution: {integrity: sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=}
     dependencies:
@@ -4232,7 +4245,7 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       ajv: 6.12.6
-      lodash: 4.17.15
+      lodash: 4.17.21
       slice-ansi: 2.1.0
       string-width: 3.1.0
     dev: true
@@ -4553,6 +4566,38 @@ packages:
       rollup: 2.70.1
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /vitest/0.9.3:
+    resolution: {integrity: sha512-hKjqdBI732cV5giNLERyAsaJBebstrX5mvTbZr+jUDYUHnX1O4DpAJcHtqBOutuBi7lVIGQ5IF8eWvHHqbCHBA==}
+    engines: {node: '>=v14.16.0'}
+    hasBin: true
+    peerDependencies:
+      '@vitest/ui': '*'
+      c8: '*'
+      happy-dom: '*'
+      jsdom: '*'
+    peerDependenciesMeta:
+      '@vitest/ui':
+        optional: true
+      c8:
+        optional: true
+      happy-dom:
+        optional: true
+      jsdom:
+        optional: true
+    dependencies:
+      '@types/chai': 4.3.0
+      '@types/chai-subset': 1.3.3
+      chai: 4.3.6
+      local-pkg: 0.4.1
+      tinypool: 0.1.2
+      tinyspy: 0.3.2
+      vite: 2.9.1
+    transitivePeerDependencies:
+      - less
+      - sass
+      - stylus
     dev: true
 
   /vitest/0.9.3_jsdom@19.0.0:
