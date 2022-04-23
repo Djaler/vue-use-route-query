@@ -1,8 +1,6 @@
-import { computed, ComputedRef, getCurrentInstance } from '@vue/composition-api';
-import type VueRouter from 'vue-router';
-import type { Route } from 'vue-router';
+import { computed, getCurrentInstance } from 'vue-demi';
 
-export function useRouter(): VueRouter {
+export function useRouter() {
     const vm = getCurrentInstance();
 
     if (!vm) {
@@ -12,7 +10,7 @@ export function useRouter(): VueRouter {
     return vm.proxy.$router;
 }
 
-export function useRoute(): ComputedRef<Route> {
+export function useRoute() {
     const vm = getCurrentInstance();
 
     if (!vm) {
