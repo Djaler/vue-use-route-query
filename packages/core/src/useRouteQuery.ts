@@ -1,4 +1,4 @@
-import { computed, Ref } from '@vue/composition-api';
+import { computed, Ref } from 'vue-demi';
 
 import { useRoute, useRouter } from './helpers';
 import { queueQueryUpdate } from './queue-query-update';

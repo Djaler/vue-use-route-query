@@ -6,6 +6,7 @@
 > A tiny Vue composable function to create a ref synced with vue router query.
 
 ## Install
+> Works for Vue 2 and Vue 3 **within a single package** by the power of [vue-demi](https://github.com/vueuse/vue-demi)!
 
 ```sh
 npm install --save vue-use-route-query
@@ -28,7 +29,7 @@ pnpm install vue-use-route-query
 Simple example with a string parameter without any transformations
 
 ```ts
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from 'vue'
 import { useRouteQuery } from 'vue-use-route-query'
 
 export default defineComponent({
@@ -49,7 +50,7 @@ export default defineComponent({
 More complex example with a transformer
 
 ```ts
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from 'vue'
 import { useRouteQuery, RouteQueryTransformer } from 'vue-use-route-query'
 
 export default defineComponent({
