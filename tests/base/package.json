@@ -1,0 +1,7 @@
+{
+  "name": "test-base",
+  "private": true,
+  "devDependencies": {
+    "vue-use-route-query": "workspace:*"
+  }
+}

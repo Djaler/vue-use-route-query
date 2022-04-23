@@ -51,23 +51,29 @@ importers:
       vue: 2.6.14
       vue-router: 3.1.3
 
+  tests/base:
+    specifiers:
+      vue-use-route-query: workspace:*
+    devDependencies:
+      vue-use-route-query: link:../../packages/core
+
   tests/vue2:
     specifiers:
       '@vue/composition-api': 1.4.9
       '@vue/test-utils': 1.3.0
       jsdom: 19.0.0
+      test-base: workspace:*
       vue: 2.6.14
       vue-router: 3.1.3
       vue-template-compiler: 2.6.14
-      vue-use-route-query: workspace:*
     devDependencies:
       '@vue/composition-api': 1.4.9_vue@2.6.14
       '@vue/test-utils': 1.3.0_9065e7474e033a8e4b95615fc8e6c36c
       jsdom: 19.0.0
+      test-base: link:../base
       vue: 2.6.14
       vue-router: 3.1.3
       vue-template-compiler: 2.6.14
-      vue-use-route-query: link:../../packages/core
 
 packages:
 
