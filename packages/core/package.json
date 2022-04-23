@@ -1,0 +1,56 @@
+{
+  "name": "vue-use-route-query",
+  "version": "0.0.1",
+  "author": "Kirill Romanov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Djaler/vue-use-route-query"
+  },
+  "keywords": [
+    "vue",
+    "router",
+    "vue-router",
+    "query",
+    "composition-api",
+    "vue-composition-api"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "check-es6": "es-check es2017 dist/index.js",
+    "check-treeshake": "agadoo dist/index.mjs",
+    "build": "vite build",
+    "postbuild": "npm run check-es6 && npm run check-treeshake",
+    "publish": "clean-publish"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "async-queue-chain": "^1.0.1"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.1.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vue/composition-api": "1.4.9",
+    "agadoo": "2.0.0",
+    "clean-publish": "4.0.0",
+    "es-check": "6.2.1",
+    "vite": "2.9.1",
+    "vite-plugin-dts": "1.0.5",
+    "vitest": "0.9.3",
+    "vue": "2.6.14",
+    "vue-router": "3.1.3"
+  },
+  "clean-publish": {
+    "withoutPublish": true,
+    "tempDir": "publishDirectory"
+  }
+}
