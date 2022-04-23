@@ -1,10 +1,14 @@
+import VueCompositionApi from '@vue/composition-api';
+import { setImmediate } from 'timers';
 import { beforeEach, expect, it } from 'vitest';
+import Vue from 'vue';
 import VueRouter from 'vue-router';
+import { RouteQueryTransformer, useRouteQuery } from 'vue-use-route-query/src';
 
-import { flushPromises } from '../tests/mocks/promises';
-import { mountComposition } from '../tests/vue-composition-test-utils';
-import { RouteQueryTransformer } from './transformers';
-import { useRouteQuery } from './useRouteQuery';
+import { mountComposition } from './vue-composition-test-utils';
+
+Vue.use(VueRouter);
+Vue.use(VueCompositionApi);
 
 let router: VueRouter;
 
@@ -141,3 +145,9 @@ it('should update query after several changes', async () => {
     expect(router.currentRoute.query.foo).toBe('FOO');
     expect(router.currentRoute.query.bar).toBe('BAR');
 });
+
+function flushPromises(): Promise<void> {
+    return new Promise((resolve) => {
+        setImmediate(resolve);
+    });
+}

@@ -31,10 +31,4 @@ export default defineConfig({
     plugins: [
         dts(),
     ],
-    test: {
-        environment: 'jsdom',
-        setupFiles: [
-            'tests/setup.ts',
-        ],
-    },
 });
