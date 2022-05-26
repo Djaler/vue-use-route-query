@@ -1,5 +1,6 @@
 [![npm](https://img.shields.io/npm/v/vue-use-route-query?style=for-the-badge)](https://www.npmjs.com/package/vue-use-route-query)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/vue-use-route-query?style=for-the-badge)](https://bundlephobia.com/result?p=vue-use-route-query)
+[![demo](https://img.shields.io/badge/demo-green?style=for-the-badge)](https://djaler.github.io/vue-use-route-query/#/)
 
 # Vue Use Route Query
 
