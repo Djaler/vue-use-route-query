@@ -7,7 +7,7 @@ export function useRouter() {
         throw new ReferenceError('Not found vue instance.');
     }
 
-    return vm.proxy.$router;
+    return vm.proxy!.$router;
 }
 
 export function useRoute() {
@@ -17,5 +17,5 @@ export function useRoute() {
         throw new ReferenceError('Not found vue instance.');
     }
 
-    return computed(() => vm.proxy.$route);
+    return computed(() => vm.proxy!.$route);
 }

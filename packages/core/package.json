@@ -16,8 +16,8 @@
     "vue-composition-api"
   ],
   "scripts": {
-    "switch-vue2": "vue-demi-switch 2",
-    "switch-vue3": "vue-demi-switch 3 vue3",
+    "switch-vue2": "vue-demi-switch 2 vue2",
+    "switch-vue3": "vue-demi-switch 3",
     "test": "vitest run",
     "check-es6": "es-check es2017 dist/index.js",
     "check-treeshake": "agadoo dist/index.mjs",
@@ -47,15 +47,14 @@
     }
   },
   "devDependencies": {
-    "@vue/composition-api": "1.4.9",
     "agadoo": "2.0.0",
     "clean-publish": "4.0.0",
     "es-check": "6.2.1",
     "vite": "2.9.1",
     "vite-plugin-dts": "1.0.5",
-    "vue": "2.6.14",
-    "vue3": "npm:vue@3",
-    "vue-router": "3.1.3"
+    "vue": "3.2.33",
+    "vue2": "npm:vue@2.6.14",
+    "vue-router": "4.0.14"
   },
   "clean-publish": {
     "withoutPublish": true,
