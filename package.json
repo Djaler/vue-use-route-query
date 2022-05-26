@@ -17,7 +17,7 @@
     "release:github": "conventional-github-releaser --preset @djaler/standard",
     "prepublishOnly": "cd packages/core && npm run publish && copyfiles CHANGELOG.md LICENSE README.md packages/core/publishDirectory"
   },
-  "packageManager": "pnpm@6.32.4",
+  "packageManager": "pnpm@7.1.6",
   "devDependencies": {
     "@djaler/conventional-changelog-standard": "1.2.0",
     "@djaler/eslint-config-typescript": "0.0.7",
