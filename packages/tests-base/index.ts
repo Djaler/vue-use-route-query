@@ -117,6 +117,24 @@ export function testUseRouteQuery(
         const foo = result.foo;
         const bar = result.bar;
         foo.value = 'FOO';
+        await flushPromises();
+        bar.value = 'BAR';
+        await flushPromises();
+
+        const query = getCurrentQuery();
+        expect(query.foo).toBe('FOO');
+        expect(query.bar).toBe('BAR');
+    });
+
+    it('should update query after several simultaneous changes', async () => {
+        const { result } = mountComposition(() => ({
+            foo: useRouteQuery('foo', null),
+            bar: useRouteQuery('bar', null),
+        }));
+
+        const foo = result.foo;
+        const bar = result.bar;
+        foo.value = 'FOO';
         bar.value = 'BAR';
         await flushPromises();
 
