@@ -2,6 +2,7 @@
   "name": "test-base",
   "private": true,
   "devDependencies": {
+    "vitest": "0.9.3",
     "vue-use-route-query": "workspace:*"
   }
 }

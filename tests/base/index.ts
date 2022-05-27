@@ -1,5 +1,5 @@
 import { setImmediate } from 'timers';
-import { expect, it } from 'vitest';
+import { expect, TestAPI } from 'vitest';
 import { RouteQueryTransformer, useRouteQuery } from 'vue-use-route-query/src';
 import { RouteQuery } from 'vue-use-route-query/src/types';
 
@@ -12,10 +12,11 @@ interface Params {
     replaceQuery: (query: RouteQuery) => Promise<void>;
     mountComposition: <R>(callback: () => R) => MountResult<R>;
     getCurrentQuery: () => RouteQuery;
+    it: TestAPI;
 }
 
 export function testUseRouteQuery(
-    { replaceQuery, mountComposition, getCurrentQuery }: Params,
+    { replaceQuery, mountComposition, getCurrentQuery, it }: Params,
 ) {
     it('should return string param if present', async () => {
         await replaceQuery({

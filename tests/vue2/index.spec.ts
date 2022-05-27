@@ -1,5 +1,5 @@
 import { testUseRouteQuery } from 'test-base';
-import { beforeEach } from 'vitest';
+import { beforeEach, it } from 'vitest';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
@@ -21,4 +21,5 @@ testUseRouteQuery({
     mountComposition: callback => mountComposition(callback, {
         router,
     }),
+    it,
 });

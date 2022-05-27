@@ -1,5 +1,5 @@
 import { testUseRouteQuery } from 'test-base';
-import { beforeEach } from 'vitest';
+import { beforeEach, it } from 'vitest';
 import { createRouter, createWebHistory, Router } from 'vue-router';
 
 import { mountComposition } from './vue-composition-test-utils';
@@ -25,4 +25,5 @@ testUseRouteQuery({
             plugins: [router],
         },
     }),
+    it,
 });
