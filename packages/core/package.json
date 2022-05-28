@@ -21,7 +21,8 @@
     "test": "vitest run",
     "check-es6": "es-check es2017 dist/index.js",
     "check-treeshake": "agadoo dist/index.mjs",
-    "build": "vite build",
+    "build:types": "tsc --project tsconfig.build.json",
+    "build": "vite build && npm run build:types",
     "postbuild": "npm run check-es6 && npm run check-treeshake",
     "publish": "clean-publish"
   },
@@ -30,7 +31,7 @@
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "dependencies": {
     "async-queue-chain": "^1.0.1",
@@ -51,7 +52,6 @@
     "clean-publish": "4.0.0",
     "es-check": "6.2.1",
     "vite": "2.9.1",
-    "vite-plugin-dts": "1.0.5",
     "vitest": "0.9.3",
     "vue": "3.2.33",
     "vue-router": "4.0.14",
