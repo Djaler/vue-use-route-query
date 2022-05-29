@@ -2,10 +2,10 @@
   "name": "tests-base",
   "private": true,
   "peerDependencies": {
-    "vitest": "0.9.3"
+    "vitest": "0.13.0"
   },
   "devDependencies": {
-    "vitest": "0.9.3",
+    "vitest": "0.13.0",
     "vue-use-route-query": "workspace:*"
   }
 }

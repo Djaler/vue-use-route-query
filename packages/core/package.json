@@ -51,10 +51,10 @@
     "agadoo": "2.0.0",
     "clean-publish": "4.0.0",
     "es-check": "6.2.1",
-    "vite": "2.9.1",
-    "vitest": "0.9.3",
-    "vue": "3.2.33",
-    "vue-router": "4.0.14",
+    "vite": "2.9.9",
+    "vitest": "0.13.0",
+    "vue": "3.2.36",
+    "vue-router": "4.0.15",
     "vue2": "npm:vue@2.6.14"
   },
   "clean-publish": {
