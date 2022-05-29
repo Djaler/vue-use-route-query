@@ -10,7 +10,7 @@ export function queueQueryUpdate(
     router: Router,
     currentQuery: RouteQuery,
     key: string,
-    newValue: string | null | undefined,
+    newValue: string | string[] | null | undefined,
 ) {
     if (!queryReplaceQueue) {
         queryReplaceQueue = createAsyncQueue();

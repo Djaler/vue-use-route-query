@@ -2,17 +2,26 @@ import { computed, Ref } from 'vue-demi';
 
 import { useRoute, useRouter } from './helpers';
 import { queueQueryUpdate } from './queue-query-update';
-import { RouteQueryTransformer } from './transformers';
-import { RouteQuery } from './types';
+import { RouteQueryArrayTransformer, RouteQueryTransformer } from './transformers';
+import { isNotNull } from './utils';
+
+type TransformerFor<T> = T extends unknown[] ? RouteQueryArrayTransformer<T> : RouteQueryTransformer<T>;
 
 export function useRouteQuery(key: string, defaultValue: string): Ref<string>;
 export function useRouteQuery(key: string, defaultValue: string | null): Ref<string | null>;
+export function useRouteQuery<T extends unknown[]>(
+    key: string, defaultValue: T, transformer: RouteQueryArrayTransformer<T>,
+): Ref<T>;
 export function useRouteQuery<T>(key: string, defaultValue: T, transformer: RouteQueryTransformer<T>): Ref<T>;
-export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: RouteQueryTransformer<T>): Ref<T> {
+export function useRouteQuery<T>(
+    key: string,
+    defaultValue: T,
+    transformer?: TransformerFor<T>,
+): Ref<T> {
     const route = useRoute();
     const router = useRouter();
 
-    function updateQueryParam(newValue: string | null | undefined) {
+    function updateQueryParam(newValue: string | string[] | null | undefined) {
         queueQueryUpdate(router, route.value.query, key, newValue);
     }
 
@@ -22,7 +31,7 @@ export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: Rou
                 return defaultValue;
             }
 
-            const value = getQueryValue(route.value.query, key);
+            const value = route.value.query[key];
 
             if (!value) {
                 return defaultValue;
@@ -30,10 +39,13 @@ export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: Rou
 
             if (!transformer) {
                 // we know for sure that the value is a T (really a string) here if transformer is not provided
-                return value as unknown as T;
+                return (Array.isArray(value) ? value[0] : value) as unknown as T;
             }
 
-            const transformedValue = transformer.fromQuery(value);
+            const transformedValue = Array.isArray(value)
+                ? transformQueryArray(value, transformer)
+                : transformQuery(value, transformer);
+
             if (transformedValue === undefined) {
                 return defaultValue;
             }
@@ -47,16 +59,43 @@ export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: Rou
                 return;
             }
 
-            const transformedValue = transformer.toQuery(value ?? undefined);
+            const transformedValue = isRouteQueryArrayTransformer(transformer)
+                ? transformer.toQueryArray(value ?? undefined)
+                : transformer.toQuery(value ?? undefined);
+
             updateQueryParam(transformedValue);
         },
     });
 }
 
-function getQueryValue(query: RouteQuery, key: string): string | null | undefined {
-    const value = query[key];
-    if (Array.isArray(value)) {
-        return value[0];
+function transformQueryArray<T>(
+    value: Array<string | null>,
+    transformer: TransformerFor<T>,
+): T | undefined {
+    if (isRouteQueryArrayTransformer(transformer)) {
+        return transformer.fromQueryArray(value.filter(isNotNull));
     }
-    return value;
+
+    if (value[0] === null) {
+        return undefined;
+    }
+
+    return transformer.fromQuery(value[0]);
+}
+
+function transformQuery<T>(
+    value: string,
+    transformer: TransformerFor<T>,
+): T | undefined {
+    if (isRouteQueryArrayTransformer(transformer)) {
+        return transformer.fromQueryArray([value]);
+    }
+
+    return transformer.fromQuery(value);
+}
+
+function isRouteQueryArrayTransformer(
+    transformer: RouteQueryTransformer<any> | RouteQueryArrayTransformer<any>,
+): transformer is RouteQueryArrayTransformer<any> {
+    return 'fromQueryArray' in transformer && 'toQueryArray' in transformer;
 }

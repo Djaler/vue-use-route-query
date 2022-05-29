@@ -1,6 +1,12 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi, vitest } from 'vitest';
 
-import { booleanTransformer, enumTransformer, floatTransformer, integerTransformer } from './transformers';
+import {
+    arrayTransformer,
+    booleanTransformer,
+    enumTransformer,
+    floatTransformer,
+    integerTransformer, RouteQueryTransformer,
+} from './transformers';
 
 describe('integerTransformer', () => {
     const transformer = integerTransformer;
@@ -106,6 +112,44 @@ describe('enumTransformer', () => {
 
         it('should return undefined if undefined provided', () => {
             expect(transformer.toQuery(undefined)).toBeUndefined();
+        });
+    });
+});
+
+describe('arrayTransformer', () => {
+    const delegate: RouteQueryTransformer<string> = {
+        fromQuery(value) {
+            if (value === 'skip') {
+                return undefined;
+            }
+            return value.toUpperCase();
+        },
+        toQuery(value) {
+            if (value === 'skip') {
+                return undefined;
+            }
+            return value?.toLowerCase();
+        },
+    };
+    const transformer = arrayTransformer(delegate);
+
+    describe('fromQueryArray', () => {
+        it('should return array of values by array of strings', () => {
+            expect(transformer.fromQueryArray(['a', 'b', 'c'])).toEqual(['A', 'B', 'C']);
+        });
+
+        it('should skip values if they not transformed by delegate', () => {
+            expect(transformer.fromQueryArray(['a', 'skip', 'c'])).toEqual(['A', 'C']);
+        });
+    });
+
+    describe('toQueryArray', () => {
+        it('should return string array by array of values', () => {
+            expect(transformer.toQueryArray(['A', 'B', 'C'])).toEqual(['a', 'b', 'c']);
+        });
+
+        it('should skip values if they not transformed by delegate', () => {
+            expect(transformer.toQueryArray(['A', 'skip', 'C'])).toEqual(['a', 'c']);
         });
     });
 });

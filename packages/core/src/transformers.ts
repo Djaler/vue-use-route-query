@@ -1,3 +1,5 @@
+import { isNotUndefined } from './utils';
+
 export interface RouteQueryTransformer<T> {
     fromQuery(value: string): T | undefined;
 
@@ -70,6 +72,23 @@ export function enumTransformer<T extends EnumLike<T>>(enumObject: T): RouteQuer
                 .find(([, val]) => val === value);
 
             return entry ? entry[0] : undefined;
+        },
+    };
+}
+
+export interface RouteQueryArrayTransformer<T extends unknown[]> {
+    fromQueryArray(value: string[]): T | undefined;
+
+    toQueryArray(value: T | undefined): string[] | undefined;
+}
+
+export function arrayTransformer<T>(transformer: RouteQueryTransformer<T>): RouteQueryArrayTransformer<T[]> {
+    return {
+        fromQueryArray(value) {
+            return value.map(item => transformer.fromQuery(item)).filter(isNotUndefined);
+        },
+        toQueryArray(value) {
+            return value?.map(item => transformer.toQuery(item)).filter(isNotUndefined);
         },
     };
 }

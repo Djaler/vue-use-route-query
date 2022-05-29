@@ -1,6 +1,11 @@
 import { setImmediate } from 'timers';
 import { expect, TestAPI } from 'vitest';
-import { RouteQueryTransformer, useRouteQuery } from 'vue-use-route-query/src';
+import {
+    arrayTransformer,
+    RouteQueryArrayTransformer,
+    RouteQueryTransformer,
+    useRouteQuery,
+} from 'vue-use-route-query/src';
 import { RouteQuery } from 'vue-use-route-query/src/types';
 
 interface MountResult<R> {
@@ -70,6 +75,24 @@ export function testUseRouteQuery(
         expect(result.value).toBe('bar');
     });
 
+    it('should return transformed value with array transformer', async () => {
+        await replaceQuery({
+            foo: ['bar', 'baz'],
+        });
+        const transformer: RouteQueryArrayTransformer<string[]> = arrayTransformer({
+            fromQuery(value) {
+                return value.toUpperCase();
+            },
+            toQuery(value) {
+                return value?.toLowerCase();
+            },
+        });
+
+        const { result } = mountComposition(() => useRouteQuery('foo', [], transformer));
+
+        expect(result.value).toEqual(['BAR', 'BAZ']);
+    });
+
     it('should update query when value set', async () => {
         const { result } = mountComposition(() => useRouteQuery('foo', null));
 
@@ -94,6 +117,23 @@ export function testUseRouteQuery(
         await flushPromises();
 
         expect(getCurrentQuery().foo).toBe('bar');
+    });
+
+    it('should update query when value set with array transformer', async () => {
+        const transformer: RouteQueryArrayTransformer<string[]> = arrayTransformer({
+            fromQuery(value) {
+                return value.toUpperCase();
+            },
+            toQuery(value) {
+                return value?.toLowerCase();
+            },
+        });
+        const { result } = mountComposition(() => useRouteQuery('foo', [], transformer));
+
+        result.value = ['BAR', 'BAZ'];
+        await flushPromises();
+
+        expect(getCurrentQuery().foo).toEqual(['bar', 'baz']);
     });
 
     it('should update query when value cleared', async () => {
