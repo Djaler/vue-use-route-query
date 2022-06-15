@@ -51,7 +51,7 @@
     "agadoo": "2.0.0",
     "clean-publish": "4.0.0",
     "es-check": "6.2.1",
-    "vite": "2.9.1",
+    "vite": "2.9.12",
     "vitest": "0.9.3",
     "vue": "3.2.33",
     "vue-router": "4.0.14",
