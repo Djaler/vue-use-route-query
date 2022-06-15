@@ -32,7 +32,7 @@ importers:
       async-queue-chain: ^1.0.1
       clean-publish: 4.0.0
       es-check: 6.2.1
-      vite: 2.9.1
+      vite: 2.9.12
       vitest: 0.9.3
       vue: 3.2.33
       vue-demi: ^0.12.5
@@ -45,7 +45,7 @@ importers:
       agadoo: 2.0.0
       clean-publish: 4.0.0
       es-check: 6.2.1
-      vite: 2.9.1
+      vite: 2.9.12
       vitest: 0.9.3
       vue: 3.2.33
       vue-router: 4.0.14_vue@3.2.33
@@ -56,7 +56,7 @@ importers:
       '@picocss/pico': 1.5.2
       '@vitejs/plugin-vue': 2.3.2
       '@vue/compiler-sfc': 3.2.33
-      vite: 2.9.8
+      vite: 2.9.12
       vue: 3.2.33
       vue-router: 4.0.14
       vue-use-route-query: workspace:*
@@ -66,9 +66,9 @@ importers:
       vue-router: 4.0.14_vue@3.2.33
       vue-use-route-query: link:../core
     devDependencies:
-      '@vitejs/plugin-vue': 2.3.2_vite@2.9.8+vue@3.2.33
+      '@vitejs/plugin-vue': 2.3.2_vite@2.9.12+vue@3.2.33
       '@vue/compiler-sfc': 3.2.33
-      vite: 2.9.8
+      vite: 2.9.12
 
   packages/tests-base:
     specifiers:
@@ -477,14 +477,14 @@ packages:
       eslint-visitor-keys: 2.1.0
     dev: true
 
-  /@vitejs/plugin-vue/2.3.2_vite@2.9.8+vue@3.2.33:
+  /@vitejs/plugin-vue/2.3.2_vite@2.9.12+vue@3.2.33:
     resolution: {integrity: sha512-umyypfSHS4kQLdYAnJHhaASq7FRzNCdvcRoQ3uYGNk1/M4a+hXUd7ysN7BLhCrWH6uBokyCkFeUAaFDzSaaSrQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: 2.9.8
+      vite: 2.9.12
       vue: 3.2.33
     dev: true
 
@@ -4689,32 +4689,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/2.9.1:
-    resolution: {integrity: sha512-vSlsSdOYGcYEJfkQ/NeLXgnRv5zZfpAsdztkIrs7AZHV8RCMZQkwjo4DS5BnrYTqoWqLoUe1Cah4aVO4oNNqCQ==}
-    engines: {node: '>=12.2.0'}
-    hasBin: true
-    peerDependencies:
-      less: '*'
-      sass: '*'
-      stylus: '*'
-    peerDependenciesMeta:
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-    dependencies:
-      esbuild: 0.14.36
-      postcss: 8.4.12
-      resolve: 1.22.0
-      rollup: 2.70.1
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
-  /vite/2.9.8:
-    resolution: {integrity: sha512-zsBGwn5UT3YS0NLSJ7hnR54+vUKfgzMUh/Z9CxF1YKEBVIe213+63jrFLmZphgGI5zXwQCSmqIdbPuE8NJywPw==}
+  /vite/2.9.12:
+    resolution: {integrity: sha512-suxC36dQo9Rq1qMB2qiRorNJtJAdxguu5TMvBHOc/F370KvqAe9t48vYp+/TbPKRNrMh/J55tOUmkuIqstZaew==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -4762,7 +4738,7 @@ packages:
       local-pkg: 0.4.1
       tinypool: 0.1.2
       tinyspy: 0.3.2
-      vite: 2.9.1
+      vite: 2.9.12
     transitivePeerDependencies:
       - less
       - sass
@@ -4795,7 +4771,7 @@ packages:
       local-pkg: 0.4.1
       tinypool: 0.1.2
       tinyspy: 0.3.2
-      vite: 2.9.1
+      vite: 2.9.12
     transitivePeerDependencies:
       - less
       - sass
