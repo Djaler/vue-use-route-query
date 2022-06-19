@@ -3,24 +3,18 @@
  * TODO: fork
  */
 import { shallowMount, Wrapper } from '@vue/test-utils';
-import Vue, { CreateElement } from 'vue';
 
-type MountingOptions = Parameters<typeof shallowMount>[1] & {
-    component?: any;
-};
+type MountingOptions = Parameters<typeof shallowMount>[1];
 
-export interface MountResult<R> extends Wrapper<Vue> {
+export interface MountResult<R> extends Wrapper<null> {
     result: R;
-    error: unknown;
 }
 
 export function mountComposition<R>(callback: () => R, options: MountingOptions = {}): MountResult<R> {
     let result: R;
     let error: unknown;
-    const { component = {}, ...other } = options;
-    const Wrap = {
-        render: (h: CreateElement) => h('div'),
-        ...component,
+    const vueWrapper = shallowMount({
+        render: h => h('div'),
         setup() {
             try {
                 result = callback();
@@ -29,14 +23,15 @@ export function mountComposition<R>(callback: () => R, options: MountingOptions 
             }
             return {
                 result,
-                error,
             };
         },
-    };
+    }, options);
 
-    const vueWrapper = shallowMount(Wrap, other);
+    if (error) {
+        throw error;
+    }
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    return Object.assign(vueWrapper, { result, error });
+    return Object.assign(vueWrapper, { result });
 }
