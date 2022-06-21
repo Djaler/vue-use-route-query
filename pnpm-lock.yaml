@@ -33,7 +33,7 @@ importers:
       clean-publish: 4.0.0
       es-check: 6.2.1
       vite: 2.9.12
-      vitest: 0.9.3
+      vitest: 0.15.2
       vue: 3.2.33
       vue-demi: ^0.12.5
       vue-router: 4.0.14
@@ -46,7 +46,7 @@ importers:
       clean-publish: 4.0.0
       es-check: 6.2.1
       vite: 2.9.12
-      vitest: 0.9.3
+      vitest: 0.15.2
       vue: 3.2.33
       vue-router: 4.0.14_vue@3.2.33
       vue2: /vue/2.6.14
@@ -72,10 +72,10 @@ importers:
 
   packages/tests-base:
     specifiers:
-      vitest: 0.9.3
+      vitest: 0.15.2
       vue-use-route-query: workspace:*
     devDependencies:
-      vitest: 0.9.3
+      vitest: 0.15.2
       vue-use-route-query: link:../core
 
   packages/tests-vue2:
@@ -84,7 +84,7 @@ importers:
       '@vue/test-utils': 1.3.0
       jsdom: 19.0.0
       tests-base: workspace:*
-      vitest: 0.9.3
+      vitest: 0.15.2
       vue: 2.6.14
       vue-router: 3.1.3
       vue-template-compiler: 2.6.14
@@ -93,7 +93,7 @@ importers:
       '@vue/test-utils': 1.3.0_sbs6or2oam5i4s4vmfp4rzwdnq
       jsdom: 19.0.0
       tests-base: link:../tests-base
-      vitest: 0.9.3_jsdom@19.0.0
+      vitest: 0.15.2_jsdom@19.0.0
       vue: 2.6.14
       vue-router: 3.1.3
       vue-template-compiler: 2.6.14_vue@2.6.14
@@ -103,14 +103,14 @@ importers:
       '@vue/test-utils': 2.0.0-rc.21
       jsdom: 19.0.0
       tests-base: workspace:*
-      vitest: 0.9.3
+      vitest: 0.15.2
       vue: 3.2.33
       vue-router: 4.0.14
     devDependencies:
       '@vue/test-utils': 2.0.0-rc.21_vue@3.2.33
       jsdom: 19.0.0
       tests-base: link:../tests-base
-      vitest: 0.9.3_jsdom@19.0.0
+      vitest: 0.15.2_jsdom@19.0.0
       vue: 3.2.33
       vue-router: 4.0.14_vue@3.2.33
 
@@ -296,11 +296,11 @@ packages:
   /@types/chai-subset/1.3.3:
     resolution: {integrity: sha512-frBecisrNGz+F4T6bcc+NLeolfiojh5FxW2klu669+8BARtyQv2C/GkNW6FUodVe4BroGMP/wER/YDGc7rEllw==}
     dependencies:
-      '@types/chai': 4.3.0
+      '@types/chai': 4.3.1
     dev: true
 
-  /@types/chai/4.3.0:
-    resolution: {integrity: sha512-/ceqdqeRraGolFTcfoXNiqjyQhZzbINDngeoAq9GoHa8PPK1yNzTaxWjA6BFWp5Ua9JpXEMSS4s5i9tS0hOJtw==}
+  /@types/chai/4.3.1:
+    resolution: {integrity: sha512-/zPMqDkzSZ8t3VtxOa4KPq7uzzW978M9Tvh+j7GHKuo6k6GTLxPJ4J5gE5cjfJ26pnXst0N5Hax8Sr0T2Mi9zQ==}
     dev: true
 
   /@types/estree/0.0.51:
@@ -2371,7 +2371,7 @@ packages:
     dev: true
 
   /get-func-name/2.0.0:
-    resolution: {integrity: sha1-6td0q+5y4gQJQzoGY2YCPdaIekE=}
+    resolution: {integrity: sha512-Hm0ixYtaSZ/V7C8FJrtZIuBBI+iSgL+1Aq82zSu8VQNB4S3Gk8e7Qs3VwBDJAhmRZcFqkl3tQu36g/Foh5I5ig==}
     dev: true
 
   /get-intrinsic/1.1.1:
@@ -4489,13 +4489,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /tinypool/0.1.2:
-    resolution: {integrity: sha512-fvtYGXoui2RpeMILfkvGIgOVkzJEGediv8UJt7TxdAOY8pnvUkFg/fkvqTfXG9Acc9S17Cnn1S4osDc2164guA==}
+  /tinypool/0.1.3:
+    resolution: {integrity: sha512-2IfcQh7CP46XGWGGbdyO4pjcKqsmVqFAPcXfPxcPXmOWt9cYkTP9HcDmGgsfijYoAEc4z9qcpM/BaBz46Y9/CQ==}
     engines: {node: '>=14.0.0'}
     dev: true
 
-  /tinyspy/0.3.2:
-    resolution: {integrity: sha512-2+40EP4D3sFYy42UkgkFFB+kiX2Tg3URG/lVvAZFfLxgGpnWl5qQJuBw1gaLttq8UOS+2p3C0WrhJnQigLTT2Q==}
+  /tinyspy/0.3.3:
+    resolution: {integrity: sha512-gRiUR8fuhUf0W9lzojPf1N1euJYA30ISebSfgca8z76FOvXtVXqd5ojEIaKLWbDQhAaC3ibxZIjqbyi4ybjcTw==}
     engines: {node: '>=14.0.0'}
     dev: true
 
@@ -4713,8 +4713,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.9.3:
-    resolution: {integrity: sha512-hKjqdBI732cV5giNLERyAsaJBebstrX5mvTbZr+jUDYUHnX1O4DpAJcHtqBOutuBi7lVIGQ5IF8eWvHHqbCHBA==}
+  /vitest/0.15.2:
+    resolution: {integrity: sha512-cMabuUqu+nNHafkdN7H8Z20+UZTrrUfqjGwAoLwUwrqFGWBz3gXwxndjbLf6mgSFs9lF/JWjKeNM1CXKwtk26w==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -4732,21 +4732,24 @@ packages:
       jsdom:
         optional: true
     dependencies:
-      '@types/chai': 4.3.0
+      '@types/chai': 4.3.1
       '@types/chai-subset': 1.3.3
+      '@types/node': 17.0.23
       chai: 4.3.6
+      debug: 4.3.4
       local-pkg: 0.4.1
-      tinypool: 0.1.2
-      tinyspy: 0.3.2
+      tinypool: 0.1.3
+      tinyspy: 0.3.3
       vite: 2.9.12
     transitivePeerDependencies:
       - less
       - sass
       - stylus
+      - supports-color
     dev: true
 
-  /vitest/0.9.3_jsdom@19.0.0:
-    resolution: {integrity: sha512-hKjqdBI732cV5giNLERyAsaJBebstrX5mvTbZr+jUDYUHnX1O4DpAJcHtqBOutuBi7lVIGQ5IF8eWvHHqbCHBA==}
+  /vitest/0.15.2_jsdom@19.0.0:
+    resolution: {integrity: sha512-cMabuUqu+nNHafkdN7H8Z20+UZTrrUfqjGwAoLwUwrqFGWBz3gXwxndjbLf6mgSFs9lF/JWjKeNM1CXKwtk26w==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -4764,18 +4767,21 @@ packages:
       jsdom:
         optional: true
     dependencies:
-      '@types/chai': 4.3.0
+      '@types/chai': 4.3.1
       '@types/chai-subset': 1.3.3
+      '@types/node': 17.0.23
       chai: 4.3.6
+      debug: 4.3.4
       jsdom: 19.0.0
       local-pkg: 0.4.1
-      tinypool: 0.1.2
-      tinyspy: 0.3.2
+      tinypool: 0.1.3
+      tinyspy: 0.3.3
       vite: 2.9.12
     transitivePeerDependencies:
       - less
       - sass
       - stylus
+      - supports-color
     dev: true
 
   /vue-demi/0.12.5_vue@3.2.33:
