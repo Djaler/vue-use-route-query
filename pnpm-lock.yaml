@@ -12,7 +12,7 @@ importers:
       conventional-github-releaser: 3.1.5
       eslint: 7.32.0
       eslint-import-resolver-typescript: 2.7.1
-      nano-staged: 0.6.0
+      nano-staged: 0.8.0
       simple-git-hooks: 2.7.0
       typescript: 4.6.3
     devDependencies:
@@ -22,7 +22,7 @@ importers:
       conventional-github-releaser: 3.1.5
       eslint: 7.32.0
       eslint-import-resolver-typescript: 2.7.1_eslint@7.32.0
-      nano-staged: 0.6.0
+      nano-staged: 0.8.0
       simple-git-hooks: 2.7.0
       typescript: 4.6.3
 
@@ -3483,8 +3483,8 @@ packages:
     resolution: {integrity: sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=}
     dev: true
 
-  /nano-staged/0.6.0:
-    resolution: {integrity: sha512-TqbdujUpBMwaBu582a5/BHlxTrs3Mu1DMk8KF2q38M0CTGiY34WRpwaQXTy5jRc5BXGjBCy4XByS69TSaS8WPw==}
+  /nano-staged/0.8.0:
+    resolution: {integrity: sha512-QSEqPGTCJbkHU2yLvfY6huqYPjdBrOaTMKatO1F8nCSrkQGXeKwtCiCnsdxnuMhbg3DTVywKaeWLGCE5oJpq0g==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -4557,7 +4557,7 @@ packages:
     dev: true
 
   /to-fast-properties/2.0.0:
-    resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=}
+    resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
 
   /to-regex-range/5.0.1:
