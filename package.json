@@ -6,11 +6,13 @@
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "switch-vue2": "cd packages/core && npm run switch-vue2",
+    "switch-vue2.7": "cd packages/core && npm run switch-vue2.7",
     "switch-vue3": "cd packages/core && npm run switch-vue3",
     "test:core": "cd packages/core && npm run test",
     "test:vue2": "npm run switch-vue2 && cd packages/tests-vue2 && npm run test",
+    "test:vue2.7": "npm run switch-vue2.7 && cd packages/tests-vue2.7 && npm run test",
     "test:vue3": "npm run switch-vue3 && cd packages/tests-vue3 && npm run test",
-    "test:all": "npm run test:core && npm run test:vue2 && npm run test:vue3",
+    "test:all": "npm run test:core && npm run test:vue2 && npm run test:vue2.7 && npm run test:vue3",
     "build": "cd packages/core && npm run build",
     "demo": "cd packages/demo && npm run dev",
     "demo:build": "cd packages/demo && npm run build",
@@ -35,7 +37,7 @@
     "packageExtensions": {
       "vue-template-compiler": {
         "peerDependencies": {
-          "vue": "2.6.14"
+          "vue": "2.x"
         }
       }
     }
