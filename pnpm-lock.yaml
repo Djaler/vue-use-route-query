@@ -89,16 +89,16 @@ importers:
       vitest: 0.15.2
       vue: 2.6.14
       vue-router: 3.5.4
-      vue-template-compiler: 2.6.14
+      vue-template-compiler: 2.7.7
     devDependencies:
       '@vue/composition-api': 1.7.0_vue@2.6.14
-      '@vue/test-utils': 1.3.0_sbs6or2oam5i4s4vmfp4rzwdnq
+      '@vue/test-utils': 1.3.0_ahrlccd765mxypnxouywpcqbtq
       jsdom: 19.0.0
       tests-base: link:../tests-base
       vitest: 0.15.2_jsdom@19.0.0
       vue: 2.6.14
       vue-router: 3.5.4
-      vue-template-compiler: 2.6.14_vue@2.6.14
+      vue-template-compiler: 2.7.7_vue@2.6.14
 
   packages/tests-vue2.7:
     specifiers:
@@ -606,7 +606,7 @@ packages:
   /@vue/shared/3.2.33:
     resolution: {integrity: sha512-UBc1Pg1T3yZ97vsA2ueER0F6GbJebLHYlEi4ou1H5YL4KWvMOOWwpYo9/QpWq93wxKG6Wo13IY74Hcn/f7c7Bg==}
 
-  /@vue/test-utils/1.3.0_sbs6or2oam5i4s4vmfp4rzwdnq:
+  /@vue/test-utils/1.3.0_ahrlccd765mxypnxouywpcqbtq:
     resolution: {integrity: sha512-Xk2Xiyj2k5dFb8eYUKkcN9PzqZSppTlx7LaQWBbdA8tqh3jHr/KHX2/YLhNFc/xwDrgeLybqd+4ZCPJSGPIqeA==}
     peerDependencies:
       vue: 2.x
@@ -616,7 +616,7 @@ packages:
       lodash: 4.17.21
       pretty: 2.0.0
       vue: 2.6.14
-      vue-template-compiler: 2.6.14_vue@2.6.14
+      vue-template-compiler: 2.7.7_vue@2.6.14
     dev: true
 
   /@vue/test-utils/1.3.0_vue@2.7.0:
@@ -4861,8 +4861,8 @@ packages:
       '@vue/devtools-api': 6.1.4
       vue: 3.2.33
 
-  /vue-template-compiler/2.6.14_vue@2.6.14:
-    resolution: {integrity: sha512-ODQS1SyMbjKoO1JBJZojSw6FE4qnh9rIpUZn2EUT86FKizx9uH5z6uXiIrm4/Nb/gwxTi/o17ZDEGWAXHvtC7g==}
+  /vue-template-compiler/2.7.7_vue@2.6.14:
+    resolution: {integrity: sha512-vxOsjWhvDPyMW7QwXPecNmTNwKyXiF+j4KjBFjDxYPuY0xvqCT5o9WrapVItR/Nrh0XThfBaL19kXFSNYtbKmw==}
     peerDependencies:
       vue: 2.x
     dependencies:
