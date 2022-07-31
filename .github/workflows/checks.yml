@@ -70,4 +70,4 @@ jobs:
       - name: Install dependencies
         run: corepack pnpm install
       - name: Run tests
-        run: npm run test:all
+        run: npm run test
