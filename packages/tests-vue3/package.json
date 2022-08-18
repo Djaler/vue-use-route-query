@@ -8,7 +8,7 @@
     "@vue/test-utils": "2.0.0-rc.21",
     "jsdom": "20.0.0",
     "tests-base": "workspace:*",
-    "vitest": "0.20.2",
+    "vitest": "0.22.1",
     "vue": "3.2.33",
     "vue-router": "4.0.14"
   }
