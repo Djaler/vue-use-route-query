@@ -25,6 +25,7 @@ importers:
       nano-staged: 0.8.0
       simple-git-hooks: 2.8.0
       typescript: 4.6.3
+    publishDirectory: packages/core/publishDirectory
 
   packages/core:
     specifiers:
@@ -97,7 +98,7 @@ importers:
       tests-base: link:../tests-base
       vitest: 0.20.2_jsdom@20.0.0
       vue: 2.6.14
-      vue-router: 3.5.4
+      vue-router: 3.5.4_vue@2.6.14
       vue-template-compiler: 2.6.14_vue@2.6.14
 
   packages/tests-vue2.7:
@@ -114,7 +115,7 @@ importers:
       tests-base: link:../tests-base
       vitest: 0.20.2_jsdom@20.0.0
       vue: 2.7.0
-      vue-router: 3.5.4
+      vue-router: 3.5.4_vue@2.7.0
 
   packages/tests-vue3:
     specifiers:
@@ -635,12 +636,6 @@ packages:
 
   /acorn/7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
-
-  /acorn/8.7.0:
-    resolution: {integrity: sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==}
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
@@ -1266,8 +1261,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -4532,8 +4527,20 @@ packages:
       vue: 3.2.33
     dev: false
 
-  /vue-router/3.5.4:
+  /vue-router/3.5.4_vue@2.6.14:
     resolution: {integrity: sha512-x+/DLAJZv2mcQ7glH2oV9ze8uPwcI+H+GgTgTmb5I55bCgY3+vXWIsqbYUzbBSZnwFHEJku4eoaH/x98veyymQ==}
+    peerDependencies:
+      vue: ^2
+    dependencies:
+      vue: 2.6.14
+    dev: true
+
+  /vue-router/3.5.4_vue@2.7.0:
+    resolution: {integrity: sha512-x+/DLAJZv2mcQ7glH2oV9ze8uPwcI+H+GgTgTmb5I55bCgY3+vXWIsqbYUzbBSZnwFHEJku4eoaH/x98veyymQ==}
+    peerDependencies:
+      vue: ^2
+    dependencies:
+      vue: 2.7.0
     dev: true
 
   /vue-router/4.0.14_vue@3.2.33:
