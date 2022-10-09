@@ -12,7 +12,7 @@
     "vue-use-route-query": "workspace:*"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "2.3.2",
+    "@vitejs/plugin-vue": "2.3.4",
     "@vue/compiler-sfc": "3.2.33",
     "vite": "2.9.15"
   }
