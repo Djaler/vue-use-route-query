@@ -142,6 +142,50 @@ export function testUseRouteQuery(
         expect(query.foo).toBe('FOO');
         expect(query.bar).toBe('BAR');
     });
+
+    it('should update query after changes in returned array', async () => {
+        const transformer: RouteQueryTransformer<string[]> = {
+            fromQuery(value: string): string[] | undefined {
+                return value?.split(',');
+            },
+            toQuery(value: string[] | undefined): string | undefined {
+                return value?.join(',');
+            },
+        };
+
+        const { result } = mountComposition(() => useRouteQuery('array', [], transformer));
+
+        result.value.push('foo');
+        result.value.push('bar');
+        await flushPromises();
+
+        expect(getCurrentQuery().array).toBe('foo,bar');
+
+        result.value = ['baz'];
+        await flushPromises();
+
+        expect(getCurrentQuery().array).toBe('baz');
+    });
+
+    it('should not react on returned array changes if it was reassigned', async () => {
+        const transformer: RouteQueryTransformer<string[]> = {
+            fromQuery(value: string): string[] | undefined {
+                return value?.split(',');
+            },
+            toQuery(value: string[] | undefined): string | undefined {
+                return value?.join(',');
+            },
+        };
+
+        const { result } = mountComposition(() => useRouteQuery('array', [], transformer));
+
+        const array = result.value;
+        result.value = ['foo', 'bar'];
+        array.push('baz');
+        await flushPromises();
+
+        expect(getCurrentQuery().array).toBe('foo,bar');
+    });
 }
 
 function flushPromises(): Promise<void> {

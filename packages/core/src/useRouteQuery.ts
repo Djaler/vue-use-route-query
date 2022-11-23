@@ -1,9 +1,10 @@
-import { computed, Ref } from 'vue-demi';
+import { computed, reactive, Ref, watch } from 'vue-demi';
 
 import { useRoute, useRouter } from './helpers';
 import { queueQueryUpdate } from './queue-query-update';
 import { RouteQueryTransformer } from './transformers';
 import { RouteQuery } from './types';
+import { isObject } from './utils';
 
 export function useRouteQuery(key: string, defaultValue: string): Ref<string>;
 export function useRouteQuery(key: string, defaultValue: string | null): Ref<string | null>;
@@ -16,39 +17,60 @@ export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: Rou
         queueQueryUpdate(router, route.value.query, key, newValue);
     }
 
+    function get(): T {
+        if (!(key in route.value.query)) {
+            return defaultValue;
+        }
+
+        const value = getQueryValue(route.value.query, key);
+
+        if (!value) {
+            return defaultValue;
+        }
+
+        if (!transformer) {
+            // we know for sure that the value is a T (really a string) here if transformer is not provided
+            return value as unknown as T;
+        }
+
+        const transformedValue = transformer.fromQuery(value);
+        if (transformedValue === undefined) {
+            return defaultValue;
+        }
+
+        return transformedValue;
+    }
+
+    function set(value: T) {
+        if (!transformer) {
+            // we know for sure that the value is a string or null here if transformer is not provided
+            updateQueryParam(value as unknown as string | null);
+            return;
+        }
+
+        const transformedValue = transformer.toQuery(value ?? undefined);
+        updateQueryParam(transformedValue);
+    }
+
+    let valueWatchStopHandle: (() => void) | undefined;
+
     return computed({
         get() {
-            if (!(key in route.value.query)) {
-                return defaultValue;
+            const value = get();
+            if (isObject(value)) {
+                const reactiveValue = reactive(value) as T & object;
+                valueWatchStopHandle?.();
+                valueWatchStopHandle = watch(reactiveValue, (newValue) => {
+                    set(newValue);
+                });
+                return reactiveValue;
             }
-
-            const value = getQueryValue(route.value.query, key);
-
-            if (!value) {
-                return defaultValue;
-            }
-
-            if (!transformer) {
-                // we know for sure that the value is a T (really a string) here if transformer is not provided
-                return value as unknown as T;
-            }
-
-            const transformedValue = transformer.fromQuery(value);
-            if (transformedValue === undefined) {
-                return defaultValue;
-            }
-
-            return transformedValue;
+            return value;
         },
         set(value) {
-            if (!transformer) {
-                // we know for sure that the value is a string or null here if transformer is not provided
-                updateQueryParam(value as unknown as string | null);
-                return;
-            }
+            valueWatchStopHandle?.();
 
-            const transformedValue = transformer.toQuery(value ?? undefined);
-            updateQueryParam(transformedValue);
+            set(value);
         },
     });
 }
