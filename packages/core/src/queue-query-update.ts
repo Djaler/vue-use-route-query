@@ -28,6 +28,12 @@ export function queueQueryUpdate(
     void queryReplaceQueue.run(currentQuery);
 }
 
+export async function waitForQueryUpdate() {
+    if (queryReplaceQueue) {
+        await queryReplaceQueue.waitForFinish();
+    }
+}
+
 async function updateQuery(router: Router, previousQuery: RouteQuery, query: RouteQuery) {
     try {
         await router.replace({
