@@ -30,7 +30,7 @@ importers:
   packages/core:
     specifiers:
       agadoo: 2.0.0
-      async-queue-chain: ^1.0.1
+      async-queue-chain: ^1.1.0
       clean-publish: 4.0.0
       es-check: 7.0.0
       vite: 2.9.15
@@ -41,7 +41,7 @@ importers:
       vue2: npm:vue@2.6.14
       vue2.7: npm:vue@2.7.0
     dependencies:
-      async-queue-chain: 1.0.1
+      async-queue-chain: 1.1.0
       vue-demi: 0.13.1_vue@3.2.33
     devDependencies:
       agadoo: 2.0.0
@@ -168,7 +168,6 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.18.2
-    dev: true
 
   /@babel/types/7.18.2:
     resolution: {integrity: sha512-0On6B8A4/+mFUto5WERt3EEuG1NznDirvwca1O8UwXQHVY8g3R7OzYgxXdOfMwLO08UrpUD/2+3Bclyq+/C94Q==}
@@ -488,7 +487,7 @@ packages:
   /@vue/compiler-core/3.2.33:
     resolution: {integrity: sha512-AAmr52ji3Zhk7IKIuigX2osWWsb2nQE5xsdFYjdnmtQ4gymmqXbjLvkSE174+fF3A3kstYrTgGkqgOEbsdLDpw==}
     dependencies:
-      '@babel/parser': 7.18.3
+      '@babel/parser': 7.18.6
       '@vue/shared': 3.2.33
       estree-walker: 2.0.2
       source-map: 0.6.1
@@ -541,7 +540,7 @@ packages:
   /@vue/reactivity-transform/3.2.33:
     resolution: {integrity: sha512-4UL5KOIvSQb254aqenW4q34qMXbfZcmEsV/yVidLUgvwYQQ/D21bGX3DlgPUGI3c4C+iOnNmDCkIxkILoX/Pyw==}
     dependencies:
-      '@babel/parser': 7.18.3
+      '@babel/parser': 7.18.6
       '@vue/compiler-core': 3.2.33
       '@vue/shared': 3.2.33
       estree-walker: 2.0.2
@@ -756,8 +755,8 @@ packages:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
 
-  /async-queue-chain/1.0.1:
-    resolution: {integrity: sha512-JSdha6bOkW6mdABJ3BYYHi+gMSQ/LDphikYt6N0Y/T6BE+KYctW6cA2btqOpBozXn6tyWOhvzGUK2Sy/bF5DrA==}
+  /async-queue-chain/1.1.0:
+    resolution: {integrity: sha512-O/qRg8ptgcy7h7QzBMZ0OltUioYYr69/sxpH/ReTK991s3G8pMZFQS2fe8NQpjpKK7nUS/yO+4jCJKaA8KeaeA==}
     dev: false
 
   /async/2.6.3:
