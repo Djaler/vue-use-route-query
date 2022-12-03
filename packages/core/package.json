@@ -35,7 +35,7 @@
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "dependencies": {
-    "async-queue-chain": "^1.0.1",
+    "async-queue-chain": "^1.1.0",
     "vue-demi": "^0.13.1"
   },
   "peerDependencies": {
