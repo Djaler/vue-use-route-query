@@ -1,6 +1,6 @@
 import { setImmediate } from 'timers';
 import { expect, TestAPI } from 'vitest';
-import { RouteQueryTransformer, useRouteQuery } from 'vue-use-route-query/src';
+import { RouteQueryTransformer, useRouteQuery, waitForQueryUpdate } from 'vue-use-route-query/src';
 import { RouteQuery } from 'vue-use-route-query/src/types';
 
 interface MountResult<R> {
@@ -185,6 +185,15 @@ export function testUseRouteQuery(
         await flushPromises();
 
         expect(getCurrentQuery().array).toBe('foo,bar');
+    });
+
+    it('should allow to wait for query update', async () => {
+        const { result } = mountComposition(() => useRouteQuery('foo', null));
+
+        result.value = 'bar';
+        await waitForQueryUpdate();
+
+        expect(getCurrentQuery().foo).toBe('bar');
     });
 }
 
