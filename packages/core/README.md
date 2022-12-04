@@ -102,3 +102,29 @@ A several transformers provided by the library out of the box:
   
   foo.value = Foo.BAZ; // Results in 'foo=BAZ' in the query
   ```
+
+Query update is asynchronous by its nature, but sometimes you may want to wait for query to be updated before doing something. For example, you may want to fetch some data from the server based on the query. To do that, you can use `waitForQueryUpdate`: 
+
+```ts
+import { defineComponent } from 'vue';
+import { useRouteQuery, waitForQueryUpdate } from 'vue-use-route-query';
+
+export default defineComponent({
+    setup() {
+        const foo = useRouteQuery('foo', '');
+
+        async function submit(value: string) {
+            foo.value = value;
+            await waitForQueryUpdate();
+            // Now the query is updated and you can do something with it
+            // For example, fetch some data from the server
+            fetch(`https://example.com/api?foo=${foo.value}`);
+        }
+
+        return {
+            foo,
+            submit,
+        };
+    },
+});
+```
