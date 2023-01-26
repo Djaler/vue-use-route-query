@@ -51,7 +51,7 @@
   "devDependencies": {
     "agadoo": "2.0.0",
     "clean-publish": "4.0.0",
-    "es-check": "7.0.0",
+    "es-check": "7.1.0",
     "vite": "2.9.15",
     "vitest": "0.22.1",
     "vue": "3.2.33",
