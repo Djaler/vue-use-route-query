@@ -56,7 +56,7 @@ importers:
 
   packages/demo:
     specifiers:
-      '@picocss/pico': 1.5.2
+      '@picocss/pico': 1.5.7
       '@vitejs/plugin-vue': 2.3.4
       '@vue/compiler-sfc': 3.2.33
       vite: 2.9.15
@@ -64,7 +64,7 @@ importers:
       vue-router: 4.0.14
       vue-use-route-query: workspace:*
     dependencies:
-      '@picocss/pico': 1.5.2
+      '@picocss/pico': 1.5.7
       vue: 3.2.33
       vue-router: 4.0.14_vue@3.2.33
       vue-use-route-query: link:../core
@@ -275,8 +275,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@picocss/pico/1.5.2:
-    resolution: {integrity: sha512-Y7LepVImg0CmRDT4W3iiO7SzGcB0MgGWoHCmn72fIZgFRQHck/LgnYb2S5lwmJPncMssPta1UwKxVQacadoaqw==}
+  /@picocss/pico/1.5.7:
+    resolution: {integrity: sha512-RygdXNlSXieAs9jMw/AeqA1ki1kldgEYbRn8BnYZIPfRTM5NWZ4uVzMK6uMPhYlRjoT5wD/OplZvIefnCqyDCQ==}
     dev: false
 
   /@pkgr/utils/2.3.1:
