@@ -13,7 +13,7 @@ importers:
       eslint: 8.20.0
       eslint-import-resolver-typescript: 3.5.3
       nano-staged: 0.8.0
-      simple-git-hooks: 2.8.0
+      simple-git-hooks: 2.8.1
       typescript: 4.6.3
     devDependencies:
       '@djaler/conventional-changelog-standard': 1.2.0
@@ -23,7 +23,7 @@ importers:
       eslint: 8.20.0
       eslint-import-resolver-typescript: 3.5.3_eslint@8.20.0
       nano-staged: 0.8.0
-      simple-git-hooks: 2.8.0
+      simple-git-hooks: 2.8.1
       typescript: 4.6.3
     publishDirectory: packages/core/publishDirectory
 
@@ -4067,8 +4067,8 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
-  /simple-git-hooks/2.8.0:
-    resolution: {integrity: sha512-ocmZQORwa6x9mxg+gVIAp5o4wXiWOHGXyrDBA0+UxGKIEKOyFtL4LWNKkP/2ornQPdlnlDGDteVeYP5FjhIoWA==}
+  /simple-git-hooks/2.8.1:
+    resolution: {integrity: sha512-DYpcVR1AGtSfFUNzlBdHrQGPsOhuuEJ/FkmPOOlFysP60AHd3nsEpkGq/QEOdtUyT1Qhk7w9oLmFoMG+75BDog==}
     hasBin: true
     requiresBuild: true
     dev: true
