@@ -31,7 +31,7 @@ importers:
     specifiers:
       agadoo: 2.0.0
       async-queue-chain: ^1.1.0
-      clean-publish: 4.0.0
+      clean-publish: 4.1.1
       es-check: 7.1.0
       vite: 2.9.15
       vitest: 0.22.1
@@ -45,7 +45,7 @@ importers:
       vue-demi: 0.13.1_vue@3.2.33
     devDependencies:
       agadoo: 2.0.0
-      clean-publish: 4.0.0
+      clean-publish: 4.1.1
       es-check: 7.1.0
       vite: 2.9.15
       vitest: 0.22.1
@@ -902,13 +902,14 @@ packages:
     resolution: {integrity: sha512-BrgHpW9NURQgzoNyjfq0Wu6VFO6D7IZEmJNdtgNqpzGG8RuNFHt2jQxWlAs4HMe119chBnv+34syEZtc6IhLtA==}
     dev: true
 
-  /clean-publish/4.0.0:
-    resolution: {integrity: sha512-PcOxJSnPgncx/ANmgPw8hj9DDtdLHTxIc6Vh/yXCX7IA9w1oUSx2POL0Vno/7omhyrKxMKTpnRh2wlzwH5zaCw==}
+  /clean-publish/4.1.1:
+    resolution: {integrity: sha512-111O3MNk6x/dAbHZwG+iRZ4AYwpKqc7Qp1MarFhE1KtQIp9m9TkDuI+hedn7qgeFnLgSw3ItgEnHNwvhc7SmGg==}
+    engines: {node: '>= 16.0.0'}
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
-      fast-glob: 3.2.11
-      lilconfig: 2.0.5
+      fast-glob: 3.2.12
+      lilconfig: 2.0.6
       micromatch: 4.0.5
     dev: true
 
@@ -2897,7 +2898,7 @@ packages:
     dev: true
 
   /isexe/2.0.0:
-    resolution: {integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=}
+    resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
   /isurl/1.0.0:
@@ -3045,8 +3046,8 @@ packages:
       type-check: 0.4.0
     dev: true
 
-  /lilconfig/2.0.5:
-    resolution: {integrity: sha512-xaYmXZtTHPAw5m+xLN8ab9C+3a8YmV3asNSPOATITbtwrfbwaLJj8h66H1WMIpALCkqsIzK3h7oQ+PdX+LQ9Eg==}
+  /lilconfig/2.0.6:
+    resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
     engines: {node: '>=10'}
     dev: true
 
