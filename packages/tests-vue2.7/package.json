@@ -9,7 +9,7 @@
     "jsdom": "20.0.3",
     "tests-base": "workspace:*",
     "vitest": "0.22.1",
-    "vue": "2.7.0",
+    "vue": "2.7.14",
     "vue-router": "3.5.4"
   }
 }
