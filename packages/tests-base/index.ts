@@ -12,11 +12,15 @@ interface Params {
     replaceQuery: (query: RouteQuery) => Promise<void>;
     mountComposition: <R>(callback: () => R) => MountResult<R>;
     getCurrentQuery: () => RouteQuery;
+    waitForRouteChange: () => Promise<void>;
+    back: () => void;
     it: TestAPI;
 }
 
 export function testUseRouteQuery(
-    { replaceQuery, mountComposition, getCurrentQuery, it }: Params,
+    {
+        replaceQuery, mountComposition, getCurrentQuery, it, back, waitForRouteChange,
+    }: Params,
 ) {
     it('should return string param if present', async () => {
         await replaceQuery({
@@ -79,6 +83,21 @@ export function testUseRouteQuery(
         expect(getCurrentQuery().foo).toBe('bar');
     });
 
+    it('should update query using push when value set', async () => {
+        const { result } = mountComposition(() => useRouteQuery('foo', null, {
+            mode: 'push',
+        }));
+
+        result.value = 'bar';
+        result.value = 'baz';
+        await flushPromises();
+
+        expect(getCurrentQuery().foo).toBe('baz');
+        back();
+        await waitForRouteChange();
+        expect(getCurrentQuery().foo).toBe('bar');
+    });
+
     it('should update query when value set with transformer', async () => {
         const transformer: RouteQueryTransformer<string> = {
             fromQuery(value) {
@@ -93,6 +112,29 @@ export function testUseRouteQuery(
         result.value = 'BAR';
         await flushPromises();
 
+        expect(getCurrentQuery().foo).toBe('bar');
+    });
+
+    it('should update query using push when value set with transformer', async () => {
+        const transformer: RouteQueryTransformer<string> = {
+            fromQuery(value) {
+                return value.toUpperCase();
+            },
+            toQuery(value) {
+                return value?.toLowerCase();
+            },
+        };
+        const { result } = mountComposition(() => useRouteQuery('foo', null, transformer, {
+            mode: 'push',
+        }));
+
+        result.value = 'BAR';
+        result.value = 'BAZ';
+        await flushPromises();
+
+        expect(getCurrentQuery().foo).toBe('baz');
+        back();
+        await waitForRouteChange();
         expect(getCurrentQuery().foo).toBe('bar');
     });
 

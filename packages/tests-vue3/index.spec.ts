@@ -20,6 +20,13 @@ testUseRouteQuery({
         await router.replace({ query });
     },
     getCurrentQuery: () => router.currentRoute.value.query,
+    back: () => router.back(),
+    waitForRouteChange: () => new Promise((resolve) => {
+        const unwatch = router.afterEach(() => {
+            resolve();
+            unwatch();
+        });
+    }),
     mountComposition: callback => mountComposition(callback, {
         global: {
             plugins: [router],

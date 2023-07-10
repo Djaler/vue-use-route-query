@@ -1,7 +1,7 @@
 import { AsyncQueue, createAsyncQueue } from 'async-queue-chain';
 import type { Router } from 'vue-router';
 
-import { RouteQuery } from './types';
+import { NavigationMode, RouteQuery } from './types';
 import { removeEmptyValues } from './utils';
 
 let queryReplaceQueue: AsyncQueue<RouteQuery> | undefined;
@@ -11,6 +11,7 @@ export function queueQueryUpdate(
     currentQuery: RouteQuery,
     key: string,
     newValue: string | null | undefined,
+    mode: NavigationMode,
 ) {
     if (!queryReplaceQueue) {
         queryReplaceQueue = createAsyncQueue();
@@ -22,7 +23,7 @@ export function queueQueryUpdate(
             [key]: newValue,
         });
 
-        return updateQuery(router, previousQuery, newQuery);
+        return updateQuery(router, previousQuery, newQuery, mode);
     });
 
     void queryReplaceQueue.run(currentQuery);
@@ -34,9 +35,9 @@ export async function waitForQueryUpdate() {
     }
 }
 
-async function updateQuery(router: Router, previousQuery: RouteQuery, query: RouteQuery) {
+async function updateQuery(router: Router, previousQuery: RouteQuery, query: RouteQuery, mode: NavigationMode) {
     try {
-        await router.replace({
+        await router[mode]({
             query,
         });
         return query;
