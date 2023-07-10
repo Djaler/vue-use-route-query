@@ -103,6 +103,17 @@ A several transformers provided by the library out of the box:
   foo.value = Foo.BAZ; // Results in 'foo=BAZ' in the query
   ```
 
+### Navigation mode
+
+By default, all changes are applied using `router.replace` to not create additional entries in history.
+But you may configure this behaviour using `mode` option.
+```ts
+const foo = useRouteQuery('foo', '', { mode: 'push' });
+const bar = useRouteQuery('bar', '', transformer, { mode: 'push' });
+```
+
+### Update awaiting
+
 Query update is asynchronous by its nature, but sometimes you may want to wait for query to be updated before doing something. For example, you may want to fetch some data from the server based on the query. To do that, you can use `waitForQueryUpdate`: 
 
 ```ts

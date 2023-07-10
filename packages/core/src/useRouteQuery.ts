@@ -3,18 +3,37 @@ import { computed, reactive, Ref, watch } from 'vue-demi';
 import { useRoute, useRouter } from './helpers';
 import { queueQueryUpdate } from './queue-query-update';
 import { RouteQueryTransformer } from './transformers';
-import { RouteQuery } from './types';
+import { NavigationMode, RouteQuery } from './types';
 import { isObject } from './utils';
 
-export function useRouteQuery(key: string, defaultValue: string): Ref<string>;
-export function useRouteQuery(key: string, defaultValue: string | null): Ref<string | null>;
-export function useRouteQuery<T>(key: string, defaultValue: T, transformer: RouteQueryTransformer<T>): Ref<T>;
-export function useRouteQuery<T>(key: string, defaultValue: T, transformer?: RouteQueryTransformer<T>): Ref<T> {
+interface Options {
+    mode?: NavigationMode;
+}
+
+type TransformerOrOptions<T> = RouteQueryTransformer<T> | Options;
+
+export function useRouteQuery(key: string, defaultValue: string, options?: Options): Ref<string>;
+export function useRouteQuery(key: string, defaultValue: string | null, options?: Options): Ref<string | null>;
+export function useRouteQuery<T>(
+    key: string,
+    defaultValue: T,
+    transformer: RouteQueryTransformer<T>,
+    options?: Options,
+): Ref<T>;
+export function useRouteQuery<T>(
+    key: string,
+    defaultValue: T,
+    transformerOrOptions?: TransformerOrOptions<T>,
+    optionsParam?: Options,
+): Ref<T> {
     const route = useRoute();
     const router = useRouter();
 
+    const [transformer, options] = extractTransformerAndOptions(transformerOrOptions, optionsParam);
+    const navigationMode = options?.mode || 'replace';
+
     function updateQueryParam(newValue: string | null | undefined) {
-        queueQueryUpdate(router, route.value.query, key, newValue);
+        queueQueryUpdate(router, route.value.query, key, newValue, navigationMode);
     }
 
     function get(): T {
@@ -81,4 +100,21 @@ function getQueryValue(query: RouteQuery, key: string): string | null | undefine
         return value[0];
     }
     return value;
+}
+
+function extractTransformerAndOptions<T>(
+    transformerOrOptions?: TransformerOrOptions<T>,
+    options?: Options,
+): [RouteQueryTransformer<T> | undefined, Options | undefined] {
+    return isTransformer(transformerOrOptions)
+        ? [transformerOrOptions, options]
+        : [undefined, transformerOrOptions || options];
+}
+
+function isTransformer<T>(
+    transformerOrOptions?: TransformerOrOptions<T>,
+): transformerOrOptions is RouteQueryTransformer<T> {
+    return !!transformerOrOptions
+        && 'fromQuery' in transformerOrOptions
+        && 'toQuery' in transformerOrOptions;
 }
